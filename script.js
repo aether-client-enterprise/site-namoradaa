@@ -2,6 +2,8 @@
 (function () {
   const hearts = document.getElementById('hearts');
   const btn = document.getElementById('btnCoracoes');
+  const chuva = document.getElementById('chuva');
+  const impacto = document.getElementById('impacto');
   const fotosContainer = document.getElementById('fotos');
 
   const nomesFotos = [
@@ -17,16 +19,18 @@
   ];
 
   const mensagens = [
-    'Esta foto guarda um pedaço de você que levo comigo em cada quilômetro entre a Bahia e São Paulo.',
-    'Olhar para você aqui do outro lado do Brasil só aumenta a vontade de apertar você contra mim.',
-    'Você em São Paulo, eu na Bahia. A distância é chata, mas você vale cada segundo de espera.',
-    'Turbulências passam, você fica. Esta foto é prova de que estamos firmes.',
-    'Cada sorriso seu nesta tela é um beijo meu atravessando o país para chegar em você.',
-    'No começo de tudo, já te escolho todos os dias, mesmo de longe.',
-    'Guardo este momento como quem guarda um tesouro. Você é minha, meu amor.',
-    'Zona norte de São Paulo, Conceição do Jacuípe na Bahia. Dois mundos, um só coração.',
-    'Eu amo ti. Cada dia mais, cada foto mais, cada beijo à distância mais.'
+    'Distância não apaga o cheiro da sua pele, só adianta a saudade.',
+    'Eu te amo mesmo sem te ver, mesmo sem te tocar, mesmo do outro lado do Brasil.',
+    'As turbulências passaram, mas o medo de te perder ficou — e eu ainda te escolho.',
+    'Conceição do Jacuípe é seca, São Paulo é cinza. Você é a única cor que importa.',
+    'No começo de tudo, já chorei de tanto amar você à distância.',
+    'Cada beijo que não deu para dar virou um coração subindo nesta tela.',
+    'Eu amo ti. Não de um jeito bonito, de um jeito que doe e fique.',
+    'Dois mundos, um só coração batendo atrasado por causa do fuso.',
+    'Se eu pudesse, pulava essa tela agora e te apertava contra mim.'
   ];
+
+  const beijosECoracoes = ['❤', '💕', '💖', '💘', '💋', '😘', '💏', '💞', '💟'];
 
   function urlFoto(nome) {
     return 'assets/fotos/' + encodeURIComponent(nome);
@@ -86,9 +90,47 @@
   });
 
   btnFechar.addEventListener('click', fecharModal);
-
   modal.addEventListener('click', (e) => {
     if (e.target === modal) fecharModal();
+  });
+
+  let chuvaAtiva = false;
+
+  function soltarPeca() {
+    if (!chuvaAtiva) return;
+    const el = document.createElement('span');
+    el.className = 'pedaço';
+    el.textContent = beijosECoracoes[Math.floor(Math.random() * beijosECoracoes.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (2 + Math.random() * 3) + 's';
+    el.style.fontSize = (16 + Math.random() * 20) + 'px';
+    el.style.opacity = Math.random() * 0.6 + 0.4;
+    chuva.appendChild(el);
+    setTimeout(() => el.remove(), 5500);
+  }
+
+  function mostrarUrsinhoCentro() {
+    impacto.classList.add('visivel');
+    impacto.setAttribute('aria-hidden', 'false');
+  }
+
+  function esconderUrsinhoCentro() {
+    impacto.classList.remove('visivel');
+    impacto.setAttribute('aria-hidden', 'true');
+  }
+
+  btn.addEventListener('click', () => {
+    chuvaAtiva = true;
+    chuva.innerHTML = '';
+    mostrarUrsinhoCentro();
+
+    const chuvaInterval = setInterval(soltarPeca, 120);
+
+    setTimeout(() => {
+      chuvaAtiva = false;
+      clearInterval(chuvaInterval);
+      esconderUrsinhoCentro();
+    }, 6000);
   });
 
   function lancarCoracao() {
@@ -106,8 +148,4 @@
 
   setInterval(lancarCoracao, 700);
   for (let i = 0; i < 10; i++) setTimeout(lancarCoracao, i * 300);
-
-  btn.addEventListener('click', () => {
-    for (let i = 0; i < 24; i++) setTimeout(lancarCoracao, i * 80);
-  });
 })();

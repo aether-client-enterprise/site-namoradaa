@@ -70,7 +70,7 @@ body {
   100% { transform: translate(40px, -40px) scale(1.08); }
 }
 
-/* Corações */
+/* Corações flutuando (fundo) */
 .hearts {
   position: fixed;
   inset: 0;
@@ -226,6 +226,69 @@ h1 {
   color: #b36a8f;
 }
 
+/* Chuva de corações e beijos */
+.chuva {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pedaço {
+  position: absolute;
+  top: -60px;
+  font-size: 24px;
+  user-select: none;
+  animation: cair linear forwards;
+}
+
+@keyframes cair {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Ursinho pulando no centro */
+.impacto-ursinho {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.impacto-ursinho.visivel {
+  display: flex;
+  animation: aparecerUrsinho 0.4s ease-out;
+}
+
+.impacto-ursinho .urso-emoji {
+  font-size: 72px;
+  filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.25));
+  display: block;
+}
+
+.impacto-ursinho .coracao-ursinho {
+  font-size: 48px;
+  color: #ff0033;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  animation: bater 0.6s ease-in-out infinite;
+}
+
+@keyframes aparecerUrsinho {
+  0% { opacity: 0; transform: translate(-50%, -40%) scale(0.6); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes bater {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
 /* Modal */
 .modal-overlay {
   position: fixed;
@@ -320,4 +383,6 @@ h1 {
   body { padding: 16px 12px; }
   .card { padding: 24px 18px 32px; border-radius: 22px; }
   .modal-img { height: 260px; }
+  .impacto-ursinho .urso-emoji { font-size: 56px; }
+  .impacto-ursinho .coracao-ursinho { font-size: 36px; }
 }
