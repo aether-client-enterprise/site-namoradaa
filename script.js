@@ -4,7 +4,26 @@
   const btn = document.getElementById('btnCoracoes');
   const fotosContainer = document.getElementById('fotos');
 
-  const nomesFotos = ['foto1.jpg', 'foto2.jpg', 'foto3.jpg', 'foto4.jpg', 'foto5.jpg', 'foto6.jpg'];
+  const nomesFotos = [
+    'WhatsApp Image 2026-11-08 at 00.47.41.jpeg',
+    'WhatsApp Image 2026-11-08 at 00.47.40 (2).jpeg',
+    'WhatsApp Image 2026-11-08 at 00.47.40.jpeg',
+    'WhatsApp Image 2026-11-07 at 10.14.40.jpeg',
+    'WhatsApp Image 2026-11-03 at 23.41.22.jpeg',
+    'WhatsApp Image 2026-10-31 at 03.12.53 (2).jpeg'
+  ];
+
+  function urlFoto(nome) {
+    return 'assets/fotos/' + encodeURIComponent(nome);
+  }
+
+  // Define as duas fotos de fundo com as duas mais recentes
+  const fundos = document.querySelectorAll('.foto-fundo');
+  fundos.forEach((el, i) => {
+    if (nomesFotos[i]) {
+      el.style.backgroundImage = "url('" + urlFoto(nomesFotos[i]) + "')";
+    }
+  });
 
   function lancarCoracao() {
     const el = document.createElement('span');
@@ -34,11 +53,11 @@
     bloco.className = 'foto';
 
     const img = document.createElement('img');
-    img.src = `assets/fotos/${nome}`;
-    img.alt = `nossa foto ${i + 1}`;
+    img.src = urlFoto(nome);
+    img.alt = 'nossa foto ' + (i + 1);
     img.onerror = () => {
       img.style.display = 'none';
-      bloco.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#b36a8f;font-size:12px;">coloque ${nome} em assets/fotos/</div>`;
+      bloco.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#b36a8f;font-size:12px;">foto na pasta assets/fotos/</div>';
     };
 
     bloco.appendChild(img);
