@@ -18,7 +18,17 @@
     'WhatsApp Image 2026-11-08 at 00.47.41.jpeg'
   ];
 
-  const mensagemUnica = 'Você está em São Paulo, zona norte. Eu estou na Bahia, Conceição do Jacuípe. Mesmo no mesmo Brasil, sob o mesmo sol, a distância entre nós parece um oceano. Esta foto é minha prova de que você é real, que está aqui perto — só que longe demais para meus braços. Eu te amo, do outro lado do mesmo Brasil.';
+  const mensagens = [
+    'Esta foi a primeira vez que você me olhou assim — e já carregava minha vida inteira nos olhos.',
+    'Você riu e esqueceu que está a milhares de quilômetros. Eu guardo esse riso como se fosse o meu lugar.',
+    'Nesta foto você está quase me tocando. Só falta o Brasil inteiro sumir entre a gente.',
+    'Eu te amo desde antes de saber que ia te amar. Esta foto prova que o começo já era nosso.',
+    'Você dormiu e eu fiquei aqui, do outro lado do país, vendo você descansar como se estivesse ao meu lado.',
+    'Turbulências passaram, lágrimas secaram, e você está aqui — ainda comigo, ainda minha.',
+    'Sua mão quase alcança a minha. A distância rouba o toque, mas não rouba o jeito como você me olha.',
+    'Conceição do Jacuípe acende, São Paulo acende, e você está no meio das luzes pensando em mim.',
+    'Se eu pudesse escolher uma só coisa para levar daqui para o resto da vida, seria este seu olhar nesta foto.'
+  ];
 
   const beijosECoracoes = ['❤', '💕', '💖', '💘', '💋', '😘', '💏', '💞', '💟'];
 
@@ -41,7 +51,7 @@
   function abrirModal(i) {
     modalImg.src = urlFoto(nomesFotos[i]);
     modalImg.alt = 'sua foto ' + (i + 1);
-    modalMsg.textContent = mensagemUnica;
+    modalMsg.textContent = mensagens[i] || mensagens[mensagens.length - 1];
     modal.classList.add('aberta');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
