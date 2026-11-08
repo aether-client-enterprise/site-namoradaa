@@ -18,17 +18,7 @@
     'WhatsApp Image 2026-11-08 at 00.47.41.jpeg'
   ];
 
-  const mensagens = [
-    'Distância não apaga o cheiro da sua pele, só adianta a saudade.',
-    'Eu te amo mesmo sem te ver, mesmo sem te tocar, mesmo do outro lado do Brasil.',
-    'As turbulências passaram, mas o medo de te perder ficou — e eu ainda te escolho.',
-    'Conceição do Jacuípe é seca, São Paulo é cinza. Você é a única cor que importa.',
-    'No começo de tudo, já chorei de tanto amar você à distância.',
-    'Cada beijo que não deu para dar virou um coração subindo nesta tela.',
-    'Eu amo ti. Não de um jeito bonito, de um jeito que doe e fique.',
-    'Dois mundos, um só coração batendo atrasado por causa do fuso.',
-    'Se eu pudesse, pulava essa tela agora e te apertava contra mim.'
-  ];
+  const mensagemUnica = 'Você está em São Paulo, zona norte. Eu estou na Bahia, Conceição do Jacuípe. Mesmo no mesmo Brasil, sob o mesmo sol, a distância entre nós parece um oceano. Esta foto é minha prova de que você é real, que está aqui perto — só que longe demais para meus braços. Eu te amo, do outro lado do mesmo Brasil.';
 
   const beijosECoracoes = ['❤', '💕', '💖', '💘', '💋', '😘', '💏', '💞', '💟'];
 
@@ -51,7 +41,7 @@
   function abrirModal(i) {
     modalImg.src = urlFoto(nomesFotos[i]);
     modalImg.alt = 'sua foto ' + (i + 1);
-    modalMsg.textContent = mensagens[i] || mensagens[mensagens.length - 1];
+    modalMsg.textContent = mensagemUnica;
     modal.classList.add('aberta');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
