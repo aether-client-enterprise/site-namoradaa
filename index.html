@@ -20,6 +20,11 @@
 
       <h1>eu te amo, meu amor</h1>
 
+      <div class="urso-placa">
+        <span class="urso-emoji">🧸</span>
+        <div class="placa">eu amo ti</div>
+      </div>
+
       <p class="mensagem">
         Você está em São Paulo, zona norte.<br>
         Eu estou na Bahia, Conceição do Jacuípe.<br>
@@ -47,6 +52,18 @@
       </footer>
     </article>
   </main>
+
+  <div class="modal-overlay" id="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="btn-fechar" id="btnFechar" aria-label="Fechar">✕</button>
+      <div class="ursinho-modal">
+        <span class="urso-emoji">🧸</span>
+        <div class="placa-mini">eu amo ti</div>
+      </div>
+      <img class="modal-img" id="modalImg" alt="sua foto">
+      <p class="modal-msg" id="modalMsg"></p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -9,7 +9,6 @@
   --rosa-fundo: #ffeef6;
   --rosa-escuro: #ffc8dd;
   --rosa-texto: #8e3b66;
-  --rosa-claro: #fff5fa;
   --branco-suave: rgba(255, 255, 255, 0.75);
 }
 
@@ -139,6 +138,30 @@ h1 {
   color: #ad4a7b;
 }
 
+/* Ursinho com placa */
+.urso-placa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 24px;
+}
+
+.urso-emoji {
+  font-size: 40px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.15));
+}
+
+.placa {
+  background: #fff;
+  border: 2px solid #c25d8f;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font: 700 16px/1 system-ui, -apple-system, Segoe UI, sans-serif;
+  color: #6a2e56;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
 .mensagem {
   font-size: clamp(1rem, 4vw, 1.25rem);
   line-height: 1.8;
@@ -184,7 +207,11 @@ h1 {
   border: 3px solid #fff;
   box-shadow: 0 6px 16px rgba(122, 62, 102, 0.12);
   background: #ffd1e7;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
+
+.foto:hover { transform: scale(1.03); }
 
 .foto img {
   width: 100%;
@@ -199,7 +226,98 @@ h1 {
   color: #b36a8f;
 }
 
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.aberta {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--branco-suave);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 26px;
+  padding: 28px 22px 36px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.aberta .modal-content {
+  transform: scale(1);
+}
+
+.btn-fechar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: 0;
+  font-size: 26px;
+  color: #c25d8f;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.btn-fechar:hover { background: rgba(255,255,255,0.4); }
+
+.ursinho-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.placa-mini {
+  background: #fff;
+  border: 2px solid #c25d8f;
+  border-radius: 10px;
+  padding: 5px 12px;
+  font: 700 14px/1 system-ui, -apple-system, Segoe UI, sans-serif;
+  color: #6a2e56;
+}
+
+.modal-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 30px rgba(122, 62, 102, 0.18);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.modal-msg {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  line-height: 1.8;
+  color: #7a3e66;
+  white-space: pre-line;
+}
+
 @media (max-width: 480px) {
   body { padding: 16px 12px; }
   .card { padding: 24px 18px 32px; border-radius: 22px; }
+  .modal-img { height: 260px; }
 }
